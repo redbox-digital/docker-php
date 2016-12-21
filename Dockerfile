@@ -1,11 +1,17 @@
-FROM php:7.0-fpm
+FROM php:7.0-fpm-alpine
 
-RUN apt-get update && apt-get install -y \
-    libfreetype6-dev \
-    libicu-dev \
-    libjpeg-dev \
+RUN apk add --no-cache \
+    freetype-dev \
+    icu-dev \
+    jpeg-dev \
     libmcrypt-dev \
-    libpng12-dev
+    libpng-dev
+
+RUN apk add --no-cache --virtual .build-deps \
+    autoconf \
+    gcc \
+    libc-dev \
+    make
 
 RUN docker-php-ext-install \
     bcmath \
@@ -41,4 +47,6 @@ RUN cd /src/ \
     && rm -rf /src/phpredis.tar.gz /src/phpredis-php7
 
 RUN docker-php-ext-enable redis
+
+RUN apk del .build-deps
 
