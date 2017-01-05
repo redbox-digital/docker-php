@@ -13,6 +13,12 @@ RUN set -xe; \
                 libmcrypt-dev \
                 libpng-dev \
                 libxslt-dev \
+                ssmtp \
+        ; \
+        \
+        docker-php-ext-configure gd \
+                --with-freetype-dir=/usr/include/ \
+                --with-jpeg-dir=/usr/include/ \
         ; \
         \
         docker-php-ext-install \
@@ -26,9 +32,11 @@ RUN set -xe; \
                 mysqli \
                 pdo \
                 pdo_mysql \
-                xslt \
+                xsl \
                 zip \
-        ;
+        ; \
+        \
+        echo "mailhub=mail:25\nUseTLS=NO\nFromLineOverride=YES" > /etc/ssmtp/ssmtp.conf;
 
 RUN set -xe; \
         \
@@ -55,4 +63,3 @@ RUN set -xe; \
         cd /; \
         rm -rf /usr/src/phpredis*; \
         apk del .build-deps;
-
