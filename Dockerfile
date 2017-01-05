@@ -12,6 +12,7 @@ RUN set -xe; \
                 jpeg-dev \
                 libmcrypt-dev \
                 libpng-dev \
+                libxslt-dev \
         ; \
         \
         docker-php-ext-install \
@@ -25,6 +26,8 @@ RUN set -xe; \
                 mysqli \
                 pdo \
                 pdo_mysql \
+                xslt \
+                zip \
         ;
 
 RUN set -xe; \
