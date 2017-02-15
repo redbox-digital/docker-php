@@ -1,4 +1,4 @@
-FROM php:7.0
+FROM php:7.0-fpm
 
 ENV PHPREDIS_COMMIT 8a0ecbc162f7ffbd5251a05022947d5d0d8a3efb
 ENV PHPREDIS_URL "https://github.com/phpredis/phpredis/archive/$PHPREDIS_COMMIT.tar.gz"
