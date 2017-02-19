@@ -63,3 +63,7 @@ RUN set -xe; \
         cd /; \
         rm -rf /usr/src/phpredis*; \
         apk del .build-deps;
+
+RUN set -xe \
+        && addgroup -g 10118 -S rd-www \
+        && adduser -u 10118 -D -S -G rd-www rd-www

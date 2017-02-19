@@ -67,3 +67,7 @@ RUN set -xe; \
                 make \
                 wget \
         ;
+
+RUN set -xe \
+        && groupadd -r rd-www --gid=10118 \
+        && useradd -r -g rd-www --uid=10118 rd-www
