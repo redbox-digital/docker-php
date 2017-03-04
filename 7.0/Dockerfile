@@ -32,11 +32,10 @@ RUN set -xe; \
                 mysqli \
                 pdo \
                 pdo_mysql \
+                soap \
                 xsl \
                 zip \
-        ; \
-        \
-        echo "mailhub=mail:25\nUseTLS=NO\nFromLineOverride=YES" > /etc/ssmtp/ssmtp.conf;
+        ;
 
 RUN set -xe; \
         \
